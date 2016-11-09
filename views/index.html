@@ -2,8 +2,6 @@
 <html>
   <head>
     <meta charset="utf-8">
-    <script src="../lib/article.js"></script>
-    <script src="../lib/articleList.js"></script>
     <script src="../src/index.js"></script>
     <title>News App</title>
   </head>
@@ -11,5 +9,23 @@
     <h1 id='h1'></h1>
     <div id='article'></div>
     <button id="all_articles">All articles</button>
+    <script>
+        var news = new XMLHttpRequest();
+        news.open('GET', "http://news-summary-api.herokuapp.com/guardian?apiRequestUrl=http://content.guardianapis.com/politics/blog/2014/feb/17/alex-salmond-speech-first-minister-scottish-independence-eu-currency-live?show-fields=body", true);
+        news.send();
+        news.addEventListener("readystatechange", processRequest, false);
+        news.onreadystatechange = processRequest;
+        function processRequest(e) {
+            if (news.readyState == 4 && news.status == 200) {
+                var obj = JSON.parse(news.responseText);
+                var url = obj.response.content.apiUrl;
+                var fullText = obj.response.content
+                var headline = obj.response.content.webTitle
+                document.getElementById("article").innerHTML =  headline + url
+            }
+          }
+
+
+    </script>
   </body>
 </html>
