@@ -7,26 +7,8 @@
   </head>
   <body>
     <h1 id='h1'></h1>
-    <div id='article'></div>
+    <div id='article'></div><br>
+    <div id='link'></div><br>
     <button id="all_articles">All articles</button>
-    <script>
-        var news = new XMLHttpRequest();
-        news.open('GET', "http://news-summary-api.herokuapp.com/guardian?apiRequestUrl=http://content.guardianapis.com/search?q=12%20years%20a%20slave&format=json&tag=film/film,tone/reviews&from-date=2010-01-01&show-tags=contributor&show-fields=starRating,headline,thumbnail,short-url&show-refinements=all&order-by=relevance", true);
-        news.send();
-        news.addEventListener("readystatechange", processRequest, false);
-        news.onreadystatechange = processRequest;
-        function processRequest(e) {
-            if (news.readyState == 4 && news.status == 200) {
-                var obj = JSON.parse(news.responseText);
-                var result = [];
-                for (var i = 0; i < obj.response.results.length; i++){
-                  var url = obj.response.results[i].webUrl
-                  var headline = obj.response.results[i].webTitle
-                  result += "<li> <a href='#" + headline + "'>" + headline + "</a></li>";
-                }
-                document.getElementById("article").innerHTML = result
-            }
-          }
-    </script>
   </body>
 </html>
