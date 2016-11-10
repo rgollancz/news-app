@@ -49,8 +49,8 @@ function makeUrlChangeShowSummary() {
     summary.addEventListener("readystatechange", processSummaryRequest, false);
     function processSummaryRequest(e){
       if (news.readyState == 4 && news.status == 200) {
-        var summaryObject = JSON.parse(summary.responseText);
-        var link = "<a href='" + url + "'>" + "Read full article" + "</a>";
+        summaryObject = JSON.parse(summary.responseText);
+        link = "<a href='" + url + "'>" + "Read full article" + "</a>";
       }
       document.getElementById("article").innerHTML = summaryObject.sentences.join(" ");
       document.getElementById("link").innerHTML = link;
