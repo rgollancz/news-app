@@ -1,47 +1,12 @@
+var expect = {
 
-
-function toEqual(a,b) {
-  if (a == b) {
-    return "passed";
-  }
-    else {
-      return "error";
+  toContain: function(url, string) {
+    if (url = string) {
+      console.log("passed");
     }
-}
-
-function toBe(a,b) {
-  if (a === b) {
-    return "passed";
-  }
     else {
-      return "error";
+      console.log("error");
     }
-}
-
-function isTrue(expectation) {
-  if (expectation = true) {
-    return "passed";
   }
-    else {
-      return "error";
-    }
-}
 
-
-function isNotTrue(expection) {
-  if (expectation != true) {
-    return "passed";
-  }
-    else {
-      return "error";
-    }
-}
-
-function isIncludedInArray(value, array) {
-  if (array.includes(value)) {
-  return "passed";
-}
-  else {
-    return "error";
-  }
-}
+};
