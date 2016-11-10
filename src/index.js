@@ -1,4 +1,6 @@
 // GET ARTICLE LIST
+var newsApp = new NewsApp
+
 var news = new XMLHttpRequest();
 news.open('GET', "http://news-summary-api.herokuapp.com/guardian?apiRequestUrl=http://content.guardianapis.com/search?q=12%20years%20a%20slave&format=json&tag=film/film,tone/reviews&from-date=2010-01-01&show-tags=contributor&show-fields=starRating,headline,thumbnail,short-url&show-refinements=all&order-by=relevance", true);
 news.send();
@@ -6,11 +8,10 @@ news.addEventListener("readystatechange", processArticlesRequest, false);
 function processArticlesRequest() {
   if (news.readyState == 4 && news.status == 200) {
     var obj = JSON.parse(news.responseText);
-    var result = [];
+    result = []
     for (var i = 0; i < obj.response.results.length; i++){
-      var url = obj.response.results[i].webUrl
-      var headline = obj.response.results[i].webTitle
-      var id = obj.response.results[i].id
+      var url = newsApp.extractUrl(obj,i);
+      var headline = newsApp.extractHeadline(obj,i)
       result += "<li> <a href='#" + url + "'>" + headline + "</a></li><br>";
     }
     document.getElementById("article").innerHTML = result;
@@ -36,9 +37,8 @@ function makeUrlChangeShowSummary() {
     getSummaryFromApi(getUrlFromUrl(window.location));
   };
 
-// gets url of article from note app url
-  function getUrlFromUrl(location) {
-    return location.hash.split("#")[1];
+  function getUrlFromUrl(windowLocation) {
+    return newsApp.extractUrlfromUrl(windowLocation)
   };
 
 // gets summary from api
@@ -52,7 +52,7 @@ function makeUrlChangeShowSummary() {
         summaryObject = JSON.parse(summary.responseText);
         link = "<a href='" + url + "'>" + "Read full article" + "</a>";
       }
-      document.getElementById("article").innerHTML = summaryObject.sentences.join(" ");
+      document.getElementById("article").innerHTML = newsApp.extractSummary(summaryObject)
       document.getElementById("link").innerHTML = link;
     }
   };
