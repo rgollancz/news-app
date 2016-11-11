@@ -11,7 +11,7 @@ function processArticlesRequest() {
       var url = obj.response.results[i].webUrl;
       var headline = obj.response.results[i].webTitle;
       var id = obj.response.results[i].id;
-      result += "<li style='list-style: none'> <a href='#" + url + "'>" + headline + "</a></li><br>";
+      result += "<li style='list-style: none'> <a href='#" + url + "'>" + headline + "</a></li><br><br>";
     }
     document.getElementById("article").innerHTML = result;
   }

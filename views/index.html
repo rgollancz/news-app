@@ -6,11 +6,99 @@
     <title>News App</title>
   </head>
   <body>
+    <header class="solid-banner">
+    <div class="solid-banner__caption">
+      <h1>THE NEWS</h1>
+      <button id="all_articles" class="button">ALL ARTICLES</button>
+    </div>
+    </header>
+    <div class="container">
     <h1 id='h1'></h1>
-    <div id='article'></div><br>
-    <div id='link'></div><br>
-    <button id="all_articles">All articles</button>
+    <div id='article' class="article"></div><br>
+    <div id='link' class="link"></div><br>
     <script src="../spec/testLibrary.js"></script>
     <script src="../spec/indexSpec.js"></script>
+  </div>
   </body>
 </html>
+<style>
+.button {
+  position: absolute;
+  right: 20px;
+  background-color: #8C6104;
+  border: none;
+  color: #ffffff;
+  border-radius: 8px;
+  text-align: center;
+  font-size: 18px;
+  padding: 10px;
+  font-family: century, fantasy;
+}
+button:hover{
+  font-size: 2em;
+  padding: 20px;
+  background-color: #E46CAA;
+}
+a:link, a:active, a:visited {
+  color: #ffffff;
+  padding: 0.8%;
+  margin: 10px;
+  border-radius: 3px;
+  font-family: comic, fantasy;
+}
+
+a:hover {
+  color: #0D63FF;
+  /*background-color: #041D4A;*/
+  font-size: 30px;
+}
+.article {
+  color: #8C6104;
+  letter-spacing: 0.6px;
+  text-align: left;
+  padding: 15px;
+}
+.container {
+  margin-top: 110px;
+  left: 0;
+  text-align: center;
+}
+.solid-banner {
+  left: 0;
+  top: 0;
+  position: fixed;
+  height: 100px;
+  width: 100%;
+  overflow: hidden;
+  background-color: #250012;
+  z-index: 1;
+}
+.solid-banner__caption {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: left;
+  padding: 20px;
+  padding-top: 0px;
+  padding-left: 50px;
+  min-height: inherit;
+  color: white;
+}
+html {
+  background-image: url(https://bruxellanatura.files.wordpress.com/2012/10/p1110919-copier.jpg);
+  background-repeat: repeat-y;
+  background-size: cover;
+}
+h1 {
+  font-family: comic, fantasy;
+  font-size: 40px;
+  margin-top: 19px;
+  margin-bottom: 19px;
+}
+body {
+  background-color: #003300;
+  opacity: 0.6;
+}
+
+</style>

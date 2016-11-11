@@ -1,0 +1,31 @@
+html {
+
+}
+
+h1{
+
+}
+
+body {
+
+}
+
+.article {
+
+}
+
+.link {
+  color: #0066ff;
+  font-size: 24px;
+
+}
+
+.button {
+  background-color: #00ff00;
+  border: none;
+  color: #ffffff;
+  border-radius: 12px;
+  text-align: center;
+  font-size: 20px;
+  padding: 10px;
+}
