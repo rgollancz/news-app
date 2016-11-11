@@ -20,4 +20,4 @@
   article.addEventListener ('DOMSubtreeModified',
   function(){ frankie.haveContent('theguardian')},
   true);
-}())
+}());
