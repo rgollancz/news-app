@@ -15,7 +15,11 @@ window.onload = function() {
     this.results.push("Extract URL test: " + result)
   };
 
-  
+  tests.prototype.extractSummarytest = function () {
+    var result = toEqual(this.model.extractSummary(cupcakes), "British baker calls all cupcake lovers. The only industry title to cover the entire baking industry. Gather at the church at 1pm on sunday. Bring your own sprinkles.")
+    console.log(this.model.extractSummary(cupcakes));
+    this.results.push("Extract summary test: " + result)
+  };
 
   tests.prototype.printResults = function() {
     var self = this
@@ -29,5 +33,6 @@ window.onload = function() {
   test = new tests();
   test.extractHeadlinetest();
   test.extractUrltest();
+  test.extractSummarytest();
   test.printResults();
 }
