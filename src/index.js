@@ -8,10 +8,10 @@ function processArticlesRequest() {
     var obj = JSON.parse(news.responseText);
     var result = [];
     for (var i = 0; i < obj.response.results.length; i++){
-      var url = obj.response.results[i].webUrl
-      var headline = obj.response.results[i].webTitle
-      var id = obj.response.results[i].id
-      result += "<li> <a href='#" + url + "'>" + headline + "</a></li><br>";
+      var url = obj.response.results[i].webUrl;
+      var headline = obj.response.results[i].webTitle;
+      var id = obj.response.results[i].id;
+      result += "<li style='list-style: none'> <a href='#" + url + "'>" + headline + "</a></li><br>";
     }
     document.getElementById("article").innerHTML = result;
   }
@@ -21,25 +21,26 @@ function processArticlesRequest() {
 window.onload = function() {
   document.getElementById("all_articles").addEventListener("click", function() {
     processArticlesRequest();
-    document.getElementById("link").innerHTML = ""
+    document.getElementById("link").innerHTML = "";
+    window.location.href = "#";
   });
-}
+};
 
 // GET SUMMARY
 makeUrlChangeShowSummary();
 
 function makeUrlChangeShowSummary() {
     window.addEventListener("hashchange", showSummaryForCurrentPage);
-  };
+  }
 
   function showSummaryForCurrentPage() {
     getSummaryFromApi(getUrlFromUrl(window.location));
-  };
+  }
 
 // gets url of article from note app url
   function getUrlFromUrl(location) {
     return location.hash.split("#")[1];
-  };
+  }
 
 // gets summary from api
   function getSummaryFromApi(url) {
@@ -47,12 +48,12 @@ function makeUrlChangeShowSummary() {
     summary.open('GET', "http://news-summary-api.herokuapp.com/aylien?apiRequestUrl=https://api.aylien.com/api/v1/summarize?url=" + url, true);
     summary.send();
     summary.addEventListener("readystatechange", processSummaryRequest, false);
-    function processSummaryRequest(e){
+    function processSummaryRequest(){
       if (news.readyState == 4 && news.status == 200) {
-        var summaryObject = JSON.parse(summary.responseText);
-        var link = "<a href='" + url + "'>" + "Read full article" + "</a>";
+        summaryObject = JSON.parse(summary.responseText);
+        link = "<a href='" + url + "'>" + "Read full article" + "</a>";
       }
       document.getElementById("article").innerHTML = summaryObject.sentences.join(" ");
       document.getElementById("link").innerHTML = link;
     }
-  };
+  }
