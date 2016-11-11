@@ -8,5 +8,6 @@
 
     new NewsAppController(new NewsAppModel(),
                           new NewsAppView(article, allArticles, link))
+
   });
 })();
