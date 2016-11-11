@@ -7,6 +7,7 @@
     this.news =  new XMLHttpRequest();
     this.getArticles();
     this.makeUrlChangeShowSummary();
+    this.getAllArticles();
   }
 
   NewsAppController.prototype = {
@@ -47,7 +48,6 @@
     },
 
     getSummaryFromApi: function(url){
-      console.log();
       var summary = new XMLHttpRequest();
       summary.open('GET', "http://news-summary-api.herokuapp.com/aylien?apiRequestUrl=https://api.aylien.com/api/v1/summarize?url=" + url, true);
       summary.send();
@@ -56,27 +56,19 @@
         if (summary.readyState == 4 && summary.status == 200) {
           var summaryObject = JSON.parse(summary.responseText);
           self._view.resetArticle(self._model.extractSummary(summaryObject))
-          // var link = this._view.createLink(url);
+          self._view.resetLink(self._view.createLink(url));
         }
       }
+    },
+
+    getAllArticles: function() {
+      var self = this
+      this._view._allArticles.addEventListener("click", function() {
+        self.getArticles();
+        self._view.resetLink("");
+      });
     }
   }
-
-
-
-
-
-
-  //
-  // //  ALL ARTICLES BUTTON
-  // window.onload = function() {
-  //   document.getElementById("all_articles").addEventListener("click", function() {
-  //     processArticlesRequest();
-  //     document.getElementById("link").innerHTML = ""
-  //   });
-  // }
-  //
-  // GET SUMMARY
 
   exports.NewsAppController = NewsAppController;
 })(this);
