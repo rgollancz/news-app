@@ -12,7 +12,7 @@
 
   NewsAppController.prototype = {
     getArticles:  function() {
-      this.news.open('GET', "http://news-summary-api.herokuapp.com/guardian?apiRequestUrl=http://content.guardianapis.com/search?q=halloumi&format=json&from-date=2014-01-01&show-tags=contributor&show-fields=headline,thumbnail,short-url&show-refinements=all&order-by=relevance", true);
+      this.news.open('GET', "http://news-summary-api.herokuapp.com/guardian?apiRequestUrl=http://content.guardianapis.com/search?show-fields=thumbnail", true);
       this.news.send();
       var self = this;
       this.news.onreadystatechange = function(){
@@ -26,7 +26,7 @@
     processArticlesRequest: function(obj) {
       var result = []
       for (var i = 0; i < obj.response.results.length; i++){
-        result += this._view.createListItem(this._model.extractUrl(obj,i),this._model.extractHeadline(obj,i))
+        result += this._view.createListItem(obj.response.results[i].fields.thumbnail,this._model.extractUrl(obj,i),this._model.extractHeadline(obj,i))
       }
       this._view.resetArticle(result);
     },
