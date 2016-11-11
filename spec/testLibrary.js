@@ -1,5 +1,3 @@
-
-
 function toEqual(a,b) {
   if (a == b) {
     return "passed";

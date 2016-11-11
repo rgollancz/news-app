@@ -12,7 +12,7 @@
 
   NewsAppController.prototype = {
     getArticles:  function() {
-      this.news.open('GET', "http://news-summary-api.herokuapp.com/guardian?apiRequestUrl=http://content.guardianapis.com/search?q=12%20years%20a%20slave&format=json&tag=film/film,tone/reviews&from-date=2010-01-01&show-tags=contributor&show-fields=starRating,headline,thumbnail,short-url&show-refinements=all&order-by=relevance", true);
+      this.news.open('GET', "http://news-summary-api.herokuapp.com/guardian?apiRequestUrl=http://content.guardianapis.com/search?q=halloumi&format=json&from-date=2014-01-01&show-tags=contributor&show-fields=headline,thumbnail,short-url&show-refinements=all&order-by=relevance", true);
       this.news.send();
       var self = this;
       this.news.onreadystatechange = function(){
