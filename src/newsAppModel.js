@@ -25,7 +25,5 @@
     return url.hash.split("#")[1];
   };
 
-
-
   exports.NewsAppModel = NewsAppModel;
 })(this);

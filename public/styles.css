@@ -1,0 +1,48 @@
+body {
+  background-color: #8c95a3
+}
+
+h1 {
+  color: white;
+  font-family: arial
+}
+
+button {
+  background-color: #ffffff;
+  border-style: solid;
+  border-color: #ffffff;
+  border-radius: 4px;
+  color: gray;
+  padding: 15px 32px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-family: arial;
+  font-size: 16px;
+
+}
+
+#article {
+  column-count: 4;
+  column-width: 300px;
+  -webkit-column-break-inside: avoid;
+}
+
+
+li {
+  display: inline-block;
+  list-style-type: none;
+  font-family: arial;
+  color: white;
+  padding-right: 5px;
+}
+
+
+#link {
+  font-family: arial
+}
+
+
+#headline {
+
+}

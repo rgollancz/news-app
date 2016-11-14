@@ -8,7 +8,7 @@
   }
 
   NewsAppView.prototype.createListItem = function(img,url,headline) {
-    return "<li> <img src='" + img + "'><br><a href='#" + url + "'>" + headline + "</a></li><br>";
+    return "<li id='ind_article'> <img height='210' width='340' src='" + img + "'><br><div id='headline'><a href='#" + url + "'>" + headline + "</a></div></li><br>";
   };
 
   NewsAppView.prototype.createLink = function(url) {
